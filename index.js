@@ -9,9 +9,6 @@ const app = express();
 sgMail.setApiKey(process.env.SENDGRID_MAIL_SERVER_KEY);
 
 // app.use(cors());
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -20,6 +17,8 @@ app.use(function (req, res, next) {
   );
   next();
 });
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   console.log("hi");
