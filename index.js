@@ -1,7 +1,7 @@
 const express = require("express");
 const sgMail = require("@sendgrid/mail");
 const bodyParser = require("body-parser");
-const cors = require('cors');
+// const cors = require("cors");
 
 require("dotenv").config();
 
@@ -9,9 +9,9 @@ const app = express();
 
 sgMail.setApiKey(process.env.SENDGRID_MAIL_SERVER_KEY);
 
-app.use(cors());
-app.use(express.json({ limit: "50mb" }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+// app.use(cors());
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -22,21 +22,13 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(
-  bodyParser.urlencoded({
-    limit: "20mb",
-    parameterLimit: 100000,
-    extended: true,
-  })
-);
-
 app.get("/", (req, res) => {
   res.send("this is the home root");
 });
 
 app.post("/send", (req, res) => {
   console.log(req.body);
-  const { img } = req.body;
+  // const { img } = req.body;
   let htmlStr = "";
   req.body.map((x) => {
     for (let d in x) {
