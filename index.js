@@ -4,7 +4,6 @@ const bodyParser = require("body-parser");
 // const cors = require("cors");
 
 require("dotenv").config();
-
 const app = express();
 
 sgMail.setApiKey(process.env.SENDGRID_MAIL_SERVER_KEY);
@@ -15,14 +14,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+  // res.header(
+  //   "Access-Control-Allow-Headers",
+  //   "Origin, X-Requested-With, Content-Type, Accept"
+  // );
   next();
 });
 
 app.get("/", (req, res) => {
+  console.log("hi");
   res.send("this is the home root");
 });
 
@@ -42,7 +42,7 @@ app.post("/send", (req, res) => {
     from: "samuel.santibout@gmail.com",
     to: [
       "santibout@yahoo.com",
-      "david@kayoventures.com",
+      // "david@kayoventures.com",
       "samuel.santibout@gmail.com",
     ],
     subject: "Mail Server",
