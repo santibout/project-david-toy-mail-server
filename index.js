@@ -37,14 +37,14 @@ function generateHtmlString(body) {
   for(let i = 0; i < body.length; i++){
     output += `
       <div style="border: 1px solid black">
-      <h2>Hi, ${body.email[i]}</h2>
-      <p>is amazon fresh customer: ${body.isAmazonFresh[i]}</p>
-      <a src=${body.amazonURL}>${body.amazonURL[i]}</a>
-      <p>Is amazon prime customer: ${body.isAmazonPrime[i]}</p>
-      <p>Is selected: ${body.isSelected[i]}</p>
-      <p>title: ${body.title[i]}</p>
-      <p>Image: ${body.fileUrlPath[i]}</p>
-      <img src=${body.fileUrlPath[i]} />
+      <h2>Hi, ${body[i].email}</h2>
+      <p>is amazon fresh customer: ${body[i].isAmazonFresh}</p>
+      <a src=${body.amazonURL}>${body[i].amazonURL}</a>
+      <p>Is amazon prime customer: ${body[i].isAmazonPrime}</p>
+      <p>Is selected: ${body[i].isSelected}</p>
+      <p>title: ${body[i].title}</p>
+      <p>Image: ${body[i].fileUrlPath}</p>
+      <img src=${body[i].fileUrlPath} />
       </div>
     `
   }
