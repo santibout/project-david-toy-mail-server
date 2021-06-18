@@ -61,7 +61,6 @@ app.post("/send", (req, res) => {
     title,
     fileUrlPath,
   } = req.body;
-  let htmlStr = "";
   const htmlStr = generateHtmlString(req.body);
   console.log(htmlStr);
   const msg = {
