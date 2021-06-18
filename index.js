@@ -34,19 +34,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // });
 function generateHtmlString(body) {
   let output = "";
-  for(let i = 0; i < body.length; i++){
+  for (let i = 0; i < body.length; i++) {
     output += `
       <div style="border: 1px solid black">
       <h2>Hi, ${body[i].email}</h2>
       <p>is amazon fresh customer: ${body[i].isAmazonFresh}</p>
-      <a src=${body.amazonURL}>${body[i].amazonURL}</a>
+      <a src=${body[i].amazonURL}>${body[i].amazonURL}</a>
       <p>Is amazon prime customer: ${body[i].isAmazonPrime}</p>
       <p>Is selected: ${body[i].isSelected}</p>
       <p>title: ${body[i].title}</p>
       <p>Image: ${body[i].fileUrlPath}</p>
       <img src=${body[i].fileUrlPath} />
       </div>
-    `
+    `;
   }
   return output;
 }
@@ -54,14 +54,15 @@ app.post("/send", (req, res) => {
   console.log(req.body);
   const {
     email,
-    isAmazonFresh,
-    amazonURL,
-    isAmazonPrime,
-    isSelected,
-    title,
-    fileUrlPath,
-  } = req.body;
+    // isAmazonFresh,
+    // amazonURL,
+    // isAmazonPrime,
+    // isSelected,
+    // title,
+    // fileUrlPath,
+  } = req.body[0];
   const htmlStr = generateHtmlString(req.body);
+  console.log("******************************************************");
   console.log(htmlStr);
   const msg = {
     from: "samuel.santibout@gmail.com",
