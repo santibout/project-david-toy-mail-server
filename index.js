@@ -33,9 +33,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   htmlStr += "<br />";
 // });
 function generateHtmlString(body) {
-  let htmlStr = "";
+  let output = "";
   for(let i = 0; i < body.length; i++){
-    htmlStr += `
+    output += `
       <div style="border: 1px solid black">
       <h2>Hi, ${body.email[i]}</h2>
       <p>is amazon fresh customer: ${body.isAmazonFresh[i]}</p>
@@ -48,7 +48,7 @@ function generateHtmlString(body) {
       </div>
     `
   }
-  return htmlStr;
+  return output;
 }
 app.post("/send", (req, res) => {
   console.log(req.body);
