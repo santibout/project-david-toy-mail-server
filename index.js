@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   }
 //   htmlStr += "<br />";
 // });
-generateHtmlString(body) {
+function generateHtmlString(body) {
   let htmlStr = "";
   for(let i = 0; i < body.length; i++){
     htmlStr += `
