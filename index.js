@@ -33,16 +33,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   htmlStr += "<br />";
 // });
 generateHtmlString(body) {
-  return `
-    <h2>Hi, ${body.email}</h2>
-    <p>is amazon fresh customer: ${body.isAmazonFresh}</p>
-    <a src=${body.amazonURL}>${body.amazonURL}</a>
-    <p>Is amazon prime customer: ${body.isAmazonPrime}</p>
-    <p>Is selected: ${body.isSelected}</p>
-    <p>title: ${body.title}</p>
-    <p>Image: ${body.fileUrlPath}</p>
-    <img src=${body.fileUrlPath} />
-  `  
+  let htmlStr = "";
+  for(let i = 0; i < body.length; i++){
+    htmlStr += `
+      <div style="border: 1px solid black">
+      <h2>Hi, ${body.email[i]}</h2>
+      <p>is amazon fresh customer: ${body.isAmazonFresh[i]}</p>
+      <a src=${body.amazonURL}>${body.amazonURL[i]}</a>
+      <p>Is amazon prime customer: ${body.isAmazonPrime[i]}</p>
+      <p>Is selected: ${body.isSelected[i]}</p>
+      <p>title: ${body.title[i]}</p>
+      <p>Image: ${body.fileUrlPath[i]}</p>
+      <img src=${body.fileUrlPath[i]} />
+      </div>
+    `
+  }
+  return htmlStr;
 }
 app.post("/send", (req, res) => {
   console.log(req.body);
